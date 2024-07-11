@@ -2,6 +2,9 @@
 
 import React, { useState, useCallback, useEffect } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const containerStyle = {
   width: "100vw",
@@ -17,7 +20,7 @@ const center = {
 function MapComponent() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCotqIwoi5mmrVa_LSdht-h6DuNG0WKzQc",
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || "",
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
