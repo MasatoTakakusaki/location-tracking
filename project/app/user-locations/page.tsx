@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+
 const containerStyle = {
   width: "100vw",
   height: "500px",
@@ -21,6 +22,7 @@ function MapComponent() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || "",
+
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
