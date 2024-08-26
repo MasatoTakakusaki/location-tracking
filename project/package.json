@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.14.1",
     "@react-google-maps/api": "^2.19.3",
     "dotenv": "^16.4.5",
     "gemini-ai": "^2.2.1",
