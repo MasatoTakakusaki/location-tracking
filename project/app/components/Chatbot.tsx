@@ -6,9 +6,9 @@ import { askAI } from "../lib/actions/gemini";
 
 dotenv.config();
 
-interface ChatbotProps {
+type ChatbotProps = {
   userLocation: { lat: number; lng: number } | null;
-}
+};
 
 export const Chatbot: React.FC<ChatbotProps> = ({ userLocation }) => {
   const [input, setInput] = useState<string>("");
