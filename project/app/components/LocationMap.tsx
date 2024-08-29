@@ -58,9 +58,7 @@ function LocationMap({ userLocation }: LocationMapProps) {
       </GoogleMap>
     </>
   ) : (
-    <>
-      <h1>Loading...</h1>
-    </>
+    <h1>Loading...</h1>
   );
 }
 
