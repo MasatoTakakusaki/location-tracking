@@ -21,8 +21,10 @@ function ContentWrapper({ children }: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body>{children}</body>
-      <Chatbot userLocation={userLocation} />
+      <body>
+        {children}
+        <Chatbot userLocation={userLocation} />
+      </body>
     </html>
   );
 }

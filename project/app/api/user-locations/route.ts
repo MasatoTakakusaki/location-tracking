@@ -1,6 +1,18 @@
 import { NextResponse } from "next/server";
+import { userLocationController } from "../../controllers/userLocationController";
 
-export async function RegisterUserLocations() {
-  const response = await fetch("http://localhost:3000/api/user-locations");
-  return new Response(response.body, response);
+// http://localhost:3000/api/user-locations
+
+// Get all user locations
+export async function GET() {
+  try {
+    const userLocations = await userLocationController();
+    return NextResponse.json(userLocations);
+  } catch (error) {
+    console.error("Error fetching user locations:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }
