@@ -10,7 +10,7 @@ async function insertUserLocation() {
     { latitude: 34.052235, longitude: -118.243683 }, // Los Angeles, USA
     { latitude: 51.507351, longitude: -0.127758 }, // London, UK
     { latitude: 35.689487, longitude: 139.691711 }, // Tokyo, Japan
-    { latitude: 35.689487, longitude: 139.691711 }, // Tokyo, Japan
+    { latitude: 35.699487, longitude: 139.692711 }, // Tokyo, Japan
     { latitude: -33.86882, longitude: 151.20929 }, // Sydney, Australia
     { latitude: 48.856613, longitude: 2.352222 }, // Paris, France
     { latitude: 52.520008, longitude: 13.404954 }, // Berlin, Germany
@@ -24,10 +24,9 @@ async function insertUserLocation() {
     { latitude: 41.902782, longitude: 12.496366 }, // Rome, Italy
     { latitude: 19.07609, longitude: 72.877426 }, // Mumbai, India
     { latitude: 3.139003, longitude: 101.686852 }, // Kuala Lumpur, Malaysia
-    { latitude: -6.208763, longitude: 106.845599 }, // Jakarta, Indonesia
     { latitude: 49.246292, longitude: -123.116226 }, // Vancouver, Canada
-    { latitude: 49.246292, longitude: -123.116226 }, // Vancouver, Canada
-    { latitude: 49.246292, longitude: -123.116226 }, // Vancouver, Canada
+    { latitude: 49.256292, longitude: -123.126226 }, // Vancouver, Canada
+    { latitude: -7.2574719, longitude: 112.7520883 }, // Surabaya, Indonesia
   ];
 
   await prisma.userLocation.createMany({

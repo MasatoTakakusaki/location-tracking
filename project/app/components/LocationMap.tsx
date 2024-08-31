@@ -7,10 +7,6 @@ dotenv.config();
 // Import LatLngLiteral type from @react-google-maps/api
 type LatLngLiteral = google.maps.LatLngLiteral;
 
-type LocationMapProps = {
-  userLocation: LatLngLiteral;
-};
-
 const containerStyle = {
   width: "100vw",
   height: "500px",
@@ -21,7 +17,13 @@ const defaultCenter: LatLngLiteral = {
   lng: -123.116226,
 };
 
-function LocationMap({ userLocation }: LocationMapProps) {
+function LocationMap({
+  currentLocation,
+  locations,
+}: {
+  currentLocation: LatLngLiteral | null;
+  locations: LatLngLiteral[];
+}) {
   const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -29,7 +31,7 @@ function LocationMap({ userLocation }: LocationMapProps) {
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
-  const [zoom, setZoom] = useState<number>(8);
+  const [zoom, setZoom] = useState<number>(5);
 
   const onUnmount = useCallback(() => {
     setMap(null);
@@ -50,16 +52,16 @@ function LocationMap({ userLocation }: LocationMapProps) {
     <>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={userLocation || defaultCenter}
+        center={currentLocation || defaultCenter}
         zoom={zoom}
         onUnmount={onUnmount}
       >
-        {userLocation && <Marker position={userLocation} />}
+        {locations.map((location, index) => (
+          <Marker key={index} position={location} />
+        ))}
       </GoogleMap>
     </>
-  ) : (
-    <h1>Loading...</h1>
-  );
+  ) : null;
 }
 
 export default React.memo(LocationMap);
