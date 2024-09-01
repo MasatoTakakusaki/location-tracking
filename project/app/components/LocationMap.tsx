@@ -12,6 +12,7 @@ const containerStyle = {
   height: "500px",
 };
 
+// Vancouver, BC
 const defaultCenter: LatLngLiteral = {
   lat: 49.246292,
   lng: -123.116226,

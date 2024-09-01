@@ -1,4 +1,7 @@
-import { userLocationModel } from "../models/userLocationModel";
+import {
+  getUserLocationModel,
+  postUserLocationModel,
+} from "../models/userLocationModel";
 import { getLocationName } from "../lib/actions/getLocation";
 
 interface UserLocation {
@@ -12,9 +15,10 @@ interface UserLocation {
   count: number;
 }
 
-export const userLocationController = async () => {
+// Get all user locations
+export const getUserLocationController = async () => {
   try {
-    const userLatsLongs = await userLocationModel();
+    const userLatsLongs = await getUserLocationModel();
 
     if (!Array.isArray(userLatsLongs)) {
       return userLatsLongs;
@@ -47,6 +51,19 @@ export const userLocationController = async () => {
     return data;
   } catch (error) {
     console.error("Error fetching user locations:", error);
+    return { error: "Internal Server Error" };
+  }
+};
+
+// Register a new user location
+export const postUserLocationController = async (
+  latitude: number,
+  longitude: number
+) => {
+  try {
+    return await postUserLocationModel(latitude, longitude);
+  } catch (error) {
+    console.error("Error registering user location:", error);
     return { error: "Internal Server Error" };
   }
 };
