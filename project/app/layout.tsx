@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useContext } from "react";
+import { RegistrationProvider } from "./context/registrationContext";
 import { Chatbot } from "./components/Chatbot";
-import { LocationProvider, LocationContext } from "./locationContext";
+import { LocationProvider, LocationContext } from "./context/locationContext";
 
 export default function RootLayout({
   children,
@@ -11,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <LocationProvider>
-      <ContentWrapper>{children}</ContentWrapper>
+      <RegistrationProvider>
+        <ContentWrapper>{children}</ContentWrapper>
+      </RegistrationProvider>
     </LocationProvider>
   );
 }

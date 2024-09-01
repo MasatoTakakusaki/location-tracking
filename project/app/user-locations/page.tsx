@@ -3,10 +3,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import LocationMap from "../components/LocationMap";
 import LocationList from "../components/LocationList";
-import { LocationContext } from "../locationContext";
+import { LocationContext } from "../context/locationContext";
+import { RegistrationContext } from "../context/registrationContext";
 
 function Page() {
   const userLocation = useContext(LocationContext);
+  const { isRegistered } = useContext(RegistrationContext);
 
   const [locations, setLocations] = useState<UserLocationType[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,7 +25,7 @@ function Page() {
     };
 
     fetchLocations();
-  }, []);
+  }, [isRegistered]); // isRegisteredがtrueになった時にfetchLocationsを再実行
 
   const latLongs = locations.map((location) => ({
     lat: location.latitude,
