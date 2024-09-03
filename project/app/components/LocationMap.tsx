@@ -8,7 +8,6 @@ dotenv.config();
 type LatLngLiteral = google.maps.LatLngLiteral;
 
 const containerStyle = {
-  width: "100vw",
   height: "500px",
 };
 
@@ -32,7 +31,7 @@ function LocationMap({
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
-  const [zoom, setZoom] = useState<number>(5);
+  const [zoom, setZoom] = useState<number>(2);
 
   const onUnmount = useCallback(() => {
     setMap(null);

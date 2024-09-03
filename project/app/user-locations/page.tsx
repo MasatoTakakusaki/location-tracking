@@ -8,8 +8,7 @@ import { RegistrationContext } from "../context/registrationContext";
 
 function Page() {
   const userLocation = useContext(LocationContext);
-  const { isRegistered } = useContext(RegistrationContext);
-
+  const { isRegistered, setIsRegistered } = useContext(RegistrationContext);
   const [locations, setLocations] = useState<UserLocationType[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -19,13 +18,14 @@ function Page() {
         const data = await getAllUserLocations();
         setLocations(data);
         setIsLoaded(true);
+        setIsRegistered(false);
       } catch (error) {
         console.error("Failed to fetch user locations:", error);
       }
     };
 
     fetchLocations();
-  }, [isRegistered]); // isRegisteredがtrueになった時にfetchLocationsを再実行
+  }, [isRegistered, setIsRegistered]);
 
   const latLongs = locations.map((location) => ({
     lat: location.latitude,
@@ -33,10 +33,14 @@ function Page() {
   }));
 
   return isLoaded ? (
-    <>
+    <div className="px-4">
+      <div className="mb-2">
+        <h1 className="italic font-bold text-4xl">Site Visitor Locations</h1>
+      </div>
       <LocationMap currentLocation={userLocation} locations={latLongs} />
+      <div className="m-1"></div>
       <LocationList locations={locations} />
-    </>
+    </div>
   ) : null;
 }
 
