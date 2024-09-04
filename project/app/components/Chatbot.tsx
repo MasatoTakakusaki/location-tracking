@@ -58,7 +58,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ userLocation }) => {
   };
 
   return (
-    <div className="fixed bottom-1 right-4 z-50">
+    <div className="fixed bottom-1 right-4 z-100">
       {isOpen ? (
         <>
           <div className="absolute bottom-8 right-0 bg-gray-100 shadow-lg h-96 w-72 rounded-lg">
