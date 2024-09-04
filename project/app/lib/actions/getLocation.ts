@@ -1,17 +1,28 @@
 import NodeGeocoder from "node-geocoder";
+import fetch, { RequestInfo, RequestInit, Response } from "node-fetch";
 
+// Define the Options interface with the correct provider type
 interface Options {
   provider: "google";
   apiKey: string;
 }
 
+// Set up the options for NodeGeocoder
 const options: Options = {
   provider: "google",
   apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
 };
 
-const fetchAdapter = (url: string, init?: RequestInit) => fetch(url, init);
-const geocoder = NodeGeocoder({ ...options, fetch: fetchAdapter });
+// Create a fetchAdapter to ensure type compatibility
+const fetchAdapter = (url: RequestInfo, init?: RequestInit) => {
+  return fetch(url, init) as Promise<Response>;
+};
+
+// Initialize the geocoder with the fetchAdapter
+const geocoder = NodeGeocoder({
+  ...options,
+  fetch: fetchAdapter as typeof fetch,
+});
 
 export async function getLocationName(lat: number, lng: number) {
   try {
