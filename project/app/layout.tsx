@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { RegistrationProvider } from "./context/registrationContext";
 import { Chatbot } from "./components/Chatbot";
 import { LocationProvider, LocationContext } from "./context/locationContext";
+import NavigationBar from "./components/NavigationBar";
 import "./globals.css";
 
 export default function RootLayout({
@@ -26,7 +27,8 @@ function ContentWrapper({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-white">
-        {children}
+        <NavigationBar />
+        <div className="px-8">{children}</div>
         <Chatbot userLocation={userLocation} />
       </body>
     </html>

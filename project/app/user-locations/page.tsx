@@ -33,14 +33,14 @@ function Page() {
   }));
 
   return isLoaded ? (
-    <div className="px-4">
+    <>
       <div className="mb-2">
         <h1 className="italic font-bold text-4xl">Site Visitor Locations</h1>
       </div>
       <LocationMap currentLocation={userLocation} locations={latLongs} />
       <div className="m-1"></div>
       <LocationList locations={locations} />
-    </div>
+    </>
   ) : null;
 }
 
