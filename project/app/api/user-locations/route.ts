@@ -4,7 +4,7 @@ import {
   postUserLocationController,
 } from "../../controllers/userLocationController";
 
-// http://localhost:3000/api/user-locations
+// http://XXX/api/user-locations
 
 // Get all user locations
 export async function GET() {

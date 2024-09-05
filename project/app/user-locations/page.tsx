@@ -46,7 +46,7 @@ function Page() {
 
 // GET all user locations data
 const getAllUserLocations = async () => {
-  const fetchAPI = "http://localhost:3000/api/user-locations";
+  const fetchAPI = "/api/user-locations";
   try {
     const response = await fetch(fetchAPI);
     if (!response.ok) {
