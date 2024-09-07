@@ -25,7 +25,7 @@ function Page() {
     };
 
     fetchLocations();
-  }, [isRegistered, setIsRegistered]);
+  }, [isRegistered, locations.length]);
 
   const latLongs = locations.map((location) => ({
     lat: location.latitude,
