@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma db push && next build",
+    "build": "prisma generate && prisma db push && next build && npx prisma migrate reset",
     "start": "next start",
     "lint": "next lint",
+    "prisma": "npx prisma migrate reset",
     "prisma:init": "npx prisma migrate reset && npx ts-node ./app/seed/seed.ts"
   },
   "dependencies": {
