@@ -50,9 +50,9 @@ async function main() {
     await deleteAll("userLocation");
   }
 
-  {
-    await insertUserLocation();
-  }
+  // {
+  //   await insertUserLocation();
+  // }
 }
 
 main();
