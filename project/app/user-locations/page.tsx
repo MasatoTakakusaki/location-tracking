@@ -36,7 +36,7 @@ function Page() {
     <>
       <div className="mb-2">
         <h1 className="italic font-bold text-4xl">
-          Site Visitor Locations(For only Admin)
+          Site Visitor Locations (For only Admin)
         </h1>
       </div>
       <LocationMap currentLocation={userLocation} locations={latLongs} />
