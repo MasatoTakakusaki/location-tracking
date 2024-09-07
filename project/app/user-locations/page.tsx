@@ -35,7 +35,9 @@ function Page() {
   return isLoaded ? (
     <>
       <div className="mb-2">
-        <h1 className="italic font-bold text-4xl">Site Visitor Locations</h1>
+        <h1 className="italic font-bold text-4xl">
+          Site Visitor Locations(For only Admin)
+        </h1>
       </div>
       <LocationMap currentLocation={userLocation} locations={latLongs} />
       <div className="m-1"></div>
